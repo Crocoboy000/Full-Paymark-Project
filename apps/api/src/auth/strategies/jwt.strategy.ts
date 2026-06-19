@@ -27,7 +27,7 @@ constructor(
 
   async validate(payload: any) {
     return {
-      userId: payload.sub,
+      id: payload.sub,
       email: payload.email,
     };
   }

@@ -43,7 +43,6 @@ function Financial() {
         
         const content = [main, title, desc, accent, btn];
         
-        /* previous cards stack */
         const tl = gsap.timeline({
         });
 
@@ -107,7 +106,6 @@ function Financial() {
           );
         });
 
-        /* card enters from bottom */
         tl.fromTo(
           card,
           { y: 180, scale: 0.9, opacity: 0 },
@@ -115,7 +113,6 @@ function Financial() {
           0
         );
 
-        /* content fades automatically */
         tl.from(
           content,
           { opacity: 0, y: 40, stagger: 0.08, duration: 0.6, ease: "power3.out" },
@@ -169,7 +166,6 @@ function Financial() {
         />
 
         {financialCards.map((card, index) => (
-          // Each wrapper fills the same absolute space → cards stack
           <div
             key={index}
             className="absolute left-0 top-0 w-full h-full flex justify-center items-center pointer-events-none"

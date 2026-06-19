@@ -1,9 +1,66 @@
-import { activities } from "@/context/dashboardData";
+"use client"
 
+import { useDashboardStore } from "@/store/dashboard.store";
 
-
+import EmptyState from "@/components/ui/EmptyState";
 
 export function RecentActivity() {
+    const data = useDashboardStore(
+      (state) => state.recentTransactions,
+    );
+  
+    const recentTransactionsLoading =
+      useDashboardStore(
+        (state) => state.recentTransactionsLoading,
+      );
+  
+    const recentTransactionsError =
+      useDashboardStore(
+        (state) => state.recentTransactionsError,
+      );
+  
+    if (recentTransactionsLoading) {
+      return (
+        <section
+          className="
+            rounded-3xl
+            col-span-12
+            md:col-span-4
+            xl:col-span-2
+            border border-white/[0.05]
+            p-5
+          "
+        >
+          Loading accounts...
+        </section>
+      );
+    }
+  
+    if (recentTransactionsError) {
+      return (
+        <section
+          className="
+            rounded-3xl
+            col-span-12
+            md:col-span-4
+            xl:col-span-2
+            border border-white/[0.05]
+            p-5
+          "
+        >
+          {recentTransactionsError}
+        </section>
+      );
+    }
+
+    if (!data?.length) {
+      return (
+        <EmptyState
+          title="No activity yet"
+          message="Your recent transactions will appear here."
+        />
+      );
+    }
   return (
     <aside
       className="
@@ -21,29 +78,34 @@ export function RecentActivity() {
       </header>
 
       <ul className="space-y-5">
-        {activities.map((activity) => (
+        {data.map((tx: any) => (
           <li
-            key={activity.title}
-            className="flex justify-between gap-3"
+            key={tx.id}
+            className="flex justify-between"
           >
             <div>
               <p className="text-caption text-white">
-                {activity.title}
+                {tx.description}
               </p>
 
-              <p className="text-[12px] text-[var(--gray3)]">
-                {activity.date}
+              <p className="text-[12px] text-gray3">
+                {new Date(
+                  tx.createdAt,
+                ).toLocaleDateString()}
               </p>
             </div>
 
             <span
               className={
-                activity.positive
+                tx.type === "INCOME"
                   ? "text-emerald-400"
-                  : "text-[var(--secondary)]"
+                  : "text-secondary"
               }
             >
-              {activity.amount}
+              {tx.type === "INCOME"
+                ? "+"
+                : "-"}
+              ${tx.amount}
             </span>
           </li>
         ))}

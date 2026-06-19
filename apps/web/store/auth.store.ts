@@ -1,17 +1,17 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-import type {
-  User,
-  AuthResponse,
-} from "@paymark/types";
+import type { AuthResponse, User } from "@paymark/types";
 
 type AuthState = {
   user: User | null;
-
   accessToken: string | null;
-
   isAuthenticated: boolean;
+
+  hasHydrated: boolean;
+
+  setHasHydrated: (
+    hydrated: boolean,
+  ) => void;
 
   setAuth: (
     authResponse: AuthResponse,
@@ -23,43 +23,51 @@ type AuthState = {
 
   logout: () => void;
 };
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
+      user: null,
+      accessToken: null,
+      isAuthenticated: false,
+      hasHydrated: false,
 
-export const useAuthStore =
-  create<AuthState>()(
-    persist(
-      (set) => ({
-        user: null,
-        accessToken: null,
-        isAuthenticated: false,
+      setHasHydrated: (hydrated) =>
+        set({
+          hasHydrated: hydrated,
+       }),
 
-        setAuth: (
-          authResponse: AuthResponse,
-        ) =>
-          set({
-            user: authResponse.user,
-            accessToken:
-              authResponse.accessToken,
-            isAuthenticated: true,
-          }),
-          
-          updateUser: (
-            user: User,
-          ) =>
-            set({
-              user,
-            }),
-          
-        logout: () =>
-          set({
-            user: null,
+      setAuth: (authResponse) =>
+        set({
+          user: "user" in authResponse ? authResponse.user : authResponse,
+          accessToken:
+            "accessToken" in authResponse ? authResponse.accessToken : null,
+          isAuthenticated: authResponse.user ? true : false,
+        }),
 
-            accessToken: null,
+      updateUser: (user) => set({ user }),
 
-            isAuthenticated: false,
-          }),
-      }),
-      {
-        name: "paymark-auth",
-      },
-    ),
-  );
+      logout: () =>
+        set({
+          user: null,
+          accessToken: null,
+          isAuthenticated: false,
+        }),
+    }),
+{
+  name: "paymark-auth",
+
+  partialize: (state) => ({
+    user: state.user,
+    accessToken: state.accessToken,
+    isAuthenticated:
+      state.isAuthenticated,
+  }),
+
+  onRehydrateStorage: () => {
+    return (state) => {
+      state?.setHasHydrated(true);
+    };
+  },
+}
+  ),
+);

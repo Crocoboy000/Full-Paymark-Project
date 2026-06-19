@@ -34,8 +34,6 @@ function Footer() {
         gap-16
       "
       >
-        {/* TOP */}
-
         <div
           className="
           grid
@@ -46,11 +44,7 @@ function Footer() {
           gap-16
         "
         >
-          {/* LEFT */}
-
           <div className="flex flex-col gap-12">
-            {/* NEWSLETTER */}
-
             <div className="flex flex-col gap-6">
               <h3
                 className="
@@ -121,8 +115,6 @@ function Footer() {
               </div>
             </div>
 
-            {/* LOGO */}
-
             <div className="relative w-[220px] md:w-[320px] h-[60px] md:h-[90px]">
               <Image
                 src="/logo.svg"
@@ -132,8 +124,6 @@ function Footer() {
               />
             </div>
           </div>
-
-          {/* RIGHT */}
 
           <div
             className="
@@ -188,11 +178,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* DIVIDER */}
-
         <div className="w-full h-px bg-white/[0.08]" />
-
-        {/* BOTTOM */}
 
         <div
           className="
@@ -209,8 +195,6 @@ function Footer() {
           gap-10
         "
         >
-          {/* COPYRIGHT */}
-
           <p
             className="
             text-[11px]
@@ -224,8 +208,6 @@ function Footer() {
             © Copyright 2025 | Design & Developed By Onixtheme |
             Powered By Framer
           </p>
-
-          {/* SOCIALS */}
 
           <div className="flex items-center gap-4">
             {socials.map((social, index) => (
@@ -264,8 +246,6 @@ function Footer() {
           </div>
         </div>
       </div>
-
-      {/* RADIAL BG */}
 
       <div
         className="

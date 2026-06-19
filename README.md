@@ -1,159 +1,269 @@
-# Turborepo starter
+# Paymark — Modern Financial Management Platform
 
-This Turborepo starter is maintained by the Turborepo core team.
+<p align="center">
+  <img src="https://img.shields.io/badge/NestJS-v11-E0234E?style=flat-square&logo=nestjs&logoColor=white" alt="NestJS 11" />
+  <img src="https://img.shields.io/badge/Next.js-v16-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js 16" />
+  <img src="https://img.shields.io/badge/Prisma-v7-2D3748?style=flat-square&logo=prisma&logoColor=white" alt="Prisma 7" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Turborepo-v2-EF4444?style=flat-square&logo=turborepo&logoColor=white" alt="Turborepo 2" />
+  <img src="https://img.shields.io/badge/pnpm-v9-F69220?style=flat-square&logo=pnpm&logoColor=white" alt="pnpm 9" />
+  <img src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4" />
+</p>
 
-## Using this example
+**Paymark** is a full-stack financial management application that combines a powerful NestJS API backend with a rich Next.js frontend. Manage accounts, transfer money, track income and expenses through an interactive dashboard, and add funds via Stripe — all wrapped in a polished dark-themed UI with smooth animations.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
+## Architecture
+
+```
+paymark/
+├── apps/
+│   ├── api/          # NestJS 11 backend — REST API on port 8000
+│   └── web/          # Next.js 16 frontend — App Router on port 3000
+├── packages/
+│   ├── types/        # @paymark/types — shared TypeScript enums & interfaces
+│   ├── validations/  # @paymark/validations — Zod 4 schemas + inferred types
+│   ├── ui/           # @repo/ui — shared React components
+│   ├── eslint-config/# @repo/eslint-config — shared ESLint flat configs
+│   └── typescript-config/ — shared tsconfig presets
+└── turbo.json        # Turborepo 2 task orchestration
 ```
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## Features
 
-### Apps and Packages
+### Authentication & User Management
+- JWT-based registration and login (Passport strategies)
+- Bcrypt password hashing
+- Protected route guards on both API and frontend
+- Auto-generated welcome notification on signup
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Account Management
+- Five account types: Checking, Savings, Credit, Investment, Cash
+- Full CRUD operations with ownership enforcement
+- User search by email for inter-account transfers
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Transactions & Transfers
+- Income, expense, and transfer transaction types
+- Real-time balance validation (insufficient funds protection)
+- Atomic database operations via Prisma `$transaction`
+- Automatic notifications for sends and receives
+- 30-day income/expense history for charting
 
-### Utilities
+### Dashboard & Analytics
+- Summary cards: total balance, income, expenses, net worth
+- Interactive revenue chart (Recharts area chart)
+- Recent activity feed
+- Account cards with individual balances
+- Quick action shortcuts
 
-This Turborepo has some additional tools already setup for you:
+### Stripe Payment Integration
+- Add funds via Stripe Checkout session
+- Webhook handling for `checkout.session.completed`
+- Automatic INCOME transaction and notification on payment
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### Notifications
+- Real-time notification generation on key events
+- Unread count badge
+- Mark individual or all notifications as read
 
-### Build
+### Landing & Marketing
+- Animated hero section with GSAP
+- Brand showcase, testimonials, pricing tiers
+- FAQ accordion, newsletter CTA
+- Full SEO: JSON-LD structured data, sitemap, Open Graph, Twitter cards
+- PWA-ready with manifest and icons
 
-To build all apps and packages, run the following command:
+---
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+## Tech Stack
 
-```sh
-cd my-turborepo
-turbo build
+| Layer | Technology |
+|---|---|
+| **Framework (API)** | NestJS 11, Express adapter |
+| **Framework (Web)** | Next.js 16 (App Router), React 19 |
+| **Database** | PostgreSQL 16 via Prisma 7 ORM |
+| **Validation** | Zod 4 (shared schemas in `@paymark/validations`) |
+| **Auth** | Passport.js (JWT + local strategies) |
+| **Payments** | Stripe (Checkout Sessions + Webhooks) |
+| **Styling** | Tailwind CSS 4, shadcn/ui primitives |
+| **Animations** | GSAP 3.15, Lenis 1.3 (smooth scroll), Motion 12 |
+| **State (Client)** | Zustand 5 (local state), TanStack React Query 5 (server state) |
+| **Charts** | Recharts 3 |
+| **Forms** | TanStack React Form 1 |
+| **HTTP** | Axios with interceptors (auto token injection, 401 redirect) |
+| **Package Manager** | pnpm 9 — workspaces |
+| **Monorepo** | Turborepo 2 |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** >= 18
+- **pnpm** >= 9 (`npm install -g pnpm@9`)
+- **PostgreSQL** >= 14 running locally or remotely
+- **Stripe account** (for payment features)
+
+### 1. Clone & Install
+
+```bash
+git clone <repo-url>
+cd paymark
+pnpm install
 ```
 
-Without global `turbo`, use your package manager:
+### 2. Environment Variables
 
-```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
+Each app has a `.env.example` file. Copy it to `.env` and fill in the values.
+
+**`apps/api/.env`**
+
+```env
+PORT=8000
+NODE_ENV=development
+DATABASE_URL=postgresql://user:password@localhost:5432/paymark
+JWT_ACCESS_SECRET=<64-byte-hex-string>
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_API_VERSION=2025-02-24.acacia
+STRIPE_WEBHOOK_SECRET=whsec_...
+FRONTEND_URL=http://localhost:3000
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+**`apps/web/.env`**
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
 ```
 
-Without global `turbo`:
+### 3. Database Setup
 
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```bash
+cd apps/api
+npx prisma migrate dev
+npx prisma generate
 ```
 
-### Develop
+### 4. Run Development Servers
 
-To develop all apps and packages, run the following command:
+```bash
+# From root — runs both API (8000) and Web (3000) concurrently
+pnpm dev
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
+# Or individually
+pnpm exec turbo dev --filter=api
 pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
 ```
 
-### Remote Caching
+---
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+## Available Scripts
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+| Command | Description |
+|---|---|
+| `pnpm dev` | Run all apps in development mode |
+| `pnpm build` | Build all apps and packages |
+| `pnpm lint` | Lint all workspaces |
+| `pnpm test` | Run all tests |
+| `pnpm format` | Format code with Prettier |
+| `pnpm exec turbo check-types` | TypeScript type checking |
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+---
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+## API Overview
 
-```sh
-cd my-turborepo
-turbo login
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| `POST` | `/auth/register` | Register a new user | No |
+| `POST` | `/auth/login` | Log in, receive JWT | No |
+| `GET` | `/auth/me` | Get current user profile | JWT |
+| `POST` | `/account` | Create an account | JWT |
+| `GET` | `/account` | List user accounts | JWT |
+| `GET` | `/account/search?email=` | Search users by email | JWT |
+| `GET` / `PATCH` / `DELETE` | `/account/:id` | CRUD on single account | JWT |
+| `POST` | `/transactions` | Create a transaction | JWT |
+| `POST` | `/transactions/transfer` | Transfer between accounts | JWT |
+| `GET` | `/transactions/recent` | Recent transactions | JWT |
+| `GET` | `/transactions/overview` | 30-day chart data | JWT |
+| `GET` | `/dashboard/summary` | Balance summary stats | JWT |
+| `GET` | `/dashboard/overview` | Dashboard overview | JWT |
+| `GET` | `/notification` | List notifications | JWT |
+| `GET` | `/notification/unread-count` | Unread count | JWT |
+| `PATCH` | `/notification/:id/read` | Mark as read | JWT |
+| `PATCH` | `/notification/read-all` | Mark all as read | JWT |
+| `POST` | `/stripe/create-checkout-session` | Create Stripe checkout | JWT |
+| `POST` | `/stripe/verify-session` | Verify payment session | JWT |
+| `POST` | `/stripe/webhook` | Stripe webhook handler | Stripe sig |
+
+---
+
+## Project Structure
+
+### `apps/api/src/`
+```
+src/
+├── main.ts                     # Bootstrap (CORS, raw body for webhooks)
+├── app.module.ts               # Root module
+├── auth/                       # Authentication (register, login, JWT, guards)
+├── user/                       # User CRUD
+├── account/                    # Financial accounts CRUD
+├── transaction/                # Transactions and transfers
+├── dashboard/                  # Dashboard summary and overview
+├── notification/               # Notifications
+└── stripe/                     # Stripe checkout + webhook
 ```
 
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
+### `apps/web/`
+```
+app/
+├── layout.tsx                  # Root layout (SEO, fonts, smooth scroll)
+├── page.tsx                    # Landing page
+├── (auth)/                     # Login & Register pages
+├── dashboard/                  # Dashboard, accounts, transfer, wallet
+├── providers.tsx               # TanStack Query provider
+components/
+├── ui/                         # Button, Input, FormField, Toast, etc.
+├── layout/                     # Navbar, Footer
+├── features/                   # Auth forms, dashboard widgets, transfer form
+└── sections/                   # Landing page sections
+hooks/                          # React Query hooks
+services/                       # Axios API services
+store/                          # Zustand stores (auth, dashboard, transfer)
+lib/                            # API client, Stripe, utilities
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+---
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## Deployment
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+### API
 
-```sh
-turbo link
+```bash
+cd apps/api
+pnpm build
+node dist/apps/api/src/main.js
 ```
 
-Without global `turbo`:
+Requires PostgreSQL and environment variables to be configured in production.
 
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
+### Web
+
+```bash
+cd apps/web
+pnpm build
+pnpm start
 ```
 
-## Useful Links
+Deploy as a standalone Next.js app. The `next build` output is in `.next/`.
 
-Learn more about the power of Turborepo:
+---
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+## License
+
+MIT

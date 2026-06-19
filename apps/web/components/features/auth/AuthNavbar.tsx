@@ -37,9 +37,9 @@ export default function AuthNavbar() {
        Don't Have An Account?
       </p>
       <DashboardButton className="h-9 w-35">
-        <div className="absolute inset-0 flex items-center justify-center">
+        <Link href="/register" className="absolute z-50 inset-0 flex items-center justify-center">
           Create Account
-        </div>
+        </Link>
       </DashboardButton>
       </div>
     </header>

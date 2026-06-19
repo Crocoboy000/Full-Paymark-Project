@@ -4,19 +4,18 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-   provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-
 model User {
   id String @id @default(cuid())
 
   firstName String
-  lastName String
+  lastName  String
 
   email String @unique
 
@@ -28,5 +27,130 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  accounts      Account[]
+  notifications Notification[]
+  payments      Payment[]
 }
 
+model Account {
+  id String @id @default(cuid())
+
+  name String
+
+  balance Decimal @default(0)
+
+  type AccountType
+
+  userId String
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sentTransactions     Transaction[] @relation("sentTx")
+  receivedTransactions Transaction[] @relation("recvTx")
+  payments             Payment[]
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  CREDIT
+  INVESTMENT
+  CASH
+}
+
+model Transaction {
+  id          String               @id @default(cuid())
+  amount      Decimal
+  type        TransactionType
+  category    TransactionCategory?
+  description String?
+
+  senderAccountId   String
+  receiverAccountId String?
+
+  senderAccount   Account  @relation("sentTx", fields: [senderAccountId], references: [id])
+  receiverAccount Account? @relation("recvTx", fields: [receiverAccountId], references: [id])
+
+  status            TransactionStatus @default(PENDING)
+  externalReference String?
+  processedAt       DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([senderAccountId])
+  @@index([receiverAccountId])
+  @@index([externalReference])
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum TransactionCategory {
+  FOOD
+  TRANSPORT
+  SHOPPING
+  ENTERTAINMENT
+  HOUSING
+  SALARY
+  INVESTMENT
+  OTHER
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+  TRANSFER
+}
+
+model Notification {
+  id String @id @default(cuid())
+
+  title   String
+  message String
+
+  read Boolean @default(false)
+
+  userId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Payment {
+  id String @id @default(cuid())
+
+  amount Decimal
+  currency String @default("usd")
+  status PaymentStatus @default(PENDING)
+
+  stripeSessionId     String  @unique
+  stripePaymentIntentId String?
+
+  userId String
+  user User @relation(fields: [userId], references: [id])
+
+  accountId String
+  account Account @relation(fields: [accountId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([stripeSessionId])
+  @@index([userId])
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}

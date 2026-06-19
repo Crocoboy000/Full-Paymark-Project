@@ -27,6 +27,10 @@ export default function LoginForm() {
   const router = useRouter();
   const [formError, setFormError] = useState("");
 
+  const setAuth =
+    useAuthStore(
+      (state) => state.setAuth,
+    );
 
 
     const loginMutation = useLogin();
@@ -53,10 +57,6 @@ onSubmit: async ({ value }) => {
         result.data,
       );
 
-    const setAuth =
-      useAuthStore(
-        (state) => state.setAuth,
-      );
 
     setAuth(
       data
@@ -90,7 +90,6 @@ onSubmit: async ({ value }) => {
         md:p-10
       "
     >
-      {/* Bottom Glow */}
       <div
         className="
           pointer-events-none
@@ -99,7 +98,6 @@ onSubmit: async ({ value }) => {
         "
       />
 
-      {/* Top Glow */}
       <div
         className="
           pointer-events-none
@@ -139,9 +137,6 @@ onSubmit: async ({ value }) => {
     form.handleSubmit();
   }}
 >
-          {/* Email */}
-
-
 <form.Field
   name="email"
   validators={{
@@ -194,7 +189,7 @@ onSubmit: async ({ value }) => {
           )
         }
         onBlur={field.handleBlur}
-        placeholder="john@example.com"
+        placeholder="email"
         className="
           w-full bg-transparent
           text-white
@@ -221,7 +216,6 @@ onSubmit: async ({ value }) => {
   )}
 </form.Field>
 
-          {/* Password */}
 <form.Field
   name="password"
   validators={{
@@ -255,14 +249,14 @@ onSubmit: async ({ value }) => {
               className="
                 flex items-center gap-3
                 rounded-2xl
-                border border-white/[0.05]
+                border border-light/5
                 bg-black/20
                 px-4 py-3
               "
             >
               <Lock
                 size={18}
-                className="text-[var(--gray1)]"
+                className="text-gray1"
               />
 
 
@@ -326,7 +320,6 @@ onSubmit: async ({ value }) => {
         </div>
         )} 
           </form.Field>
-          {/* Remember */}
           <div
             className="
             flex items-center

@@ -43,3 +43,6 @@ export interface FooterLinkSection {
   title: string;
   links: string[];
 }
+
+
+

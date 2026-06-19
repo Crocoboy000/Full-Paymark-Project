@@ -1,11 +1,10 @@
 import Header from "@/components/features/dashboard/header";
 import StatsGrid from "@/components/features/dashboard/StatsGrid";
 
-import { RevenueChartCard } from "@/components/features/dashboard/RevenueChart";
-import { BreakdownCard } from "@/components/features/dashboard/BreadownCard";
 
 import { AccountsCard } from "@/components/features/dashboard/Accounts";
-import { InvestmentPerformanceCard } from "@/components/features/dashboard/InvestmentCard";
+import { RevenueChartCard } from "@/components/features/dashboard/RevenueChart";
+
 
 import { QuickActions } from "@/components/features/dashboard/QuickActions";
 import { RecentActivity } from "@/components/features/dashboard/RecentActivity";
@@ -42,10 +41,6 @@ export default function Dashboard() {
         >
           <RevenueChartCard />
           <AccountsCard />
-          <BreakdownCard />
-
-
-          <InvestmentPerformanceCard />
         </section>
 
         <aside

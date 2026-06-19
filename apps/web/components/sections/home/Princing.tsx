@@ -27,10 +27,6 @@ function Pricing() {
     overflow-hidden
     ">
 
-      {/* Background Blur */}
-
-      {/* Heading */}
-
       <div className="flex flex-col gap-4 items-center">
 
         <h2 className="
@@ -56,8 +52,6 @@ function Pricing() {
 
       </div>
 
-
-      {/* Cards */}
 
       <div className="
       grid
@@ -100,8 +94,6 @@ function Pricing() {
           `}
           >
 
-            {/* Featured Glow */}
-
             {plan.featured && (
 
               <>
@@ -128,8 +120,6 @@ function Pricing() {
                 bg-secondary/10
                 blur-[120px]
                 "/>
-
-                {/* floating squares */}
 
                 <div className="
                 absolute
@@ -167,8 +157,6 @@ function Pricing() {
               ">
                 {plan.desc}
               </p>
-
-              {/* Price */}
 
               <div className="
               flex

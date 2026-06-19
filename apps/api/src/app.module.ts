@@ -8,6 +8,11 @@ import { JwtGuard } from './auth/guards/jwt/jwt.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from '../prisma/prisma.module';
+import { AccountModule } from './account/account.module';
+import { TransactionModule } from './transaction/transaction.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { NotificationModule } from './notification/notification.module';
+import { StripeModule } from './stripe/stripe.module';
 
 
 
@@ -16,7 +21,18 @@ import { PrismaModule } from '../prisma/prisma.module';
     isGlobal: true,
   }),
 
-  PrismaModule,],
+  PrismaModule,
+  AuthModule,
+
+  AccountModule,
+
+  TransactionModule,
+
+  DashboardModule,
+
+  NotificationModule,
+
+  StripeModule,],
   controllers: [UserController],
   providers: [UserService],
 })

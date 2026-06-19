@@ -1,3 +1,6 @@
+"use client"
+
+import Link from "next/link";
 import { quickActions } from "@/context/dashboardData";
 
 
@@ -22,8 +25,9 @@ export function QuickActions() {
           const Icon = action.icon;
 
           return (
-            <button
+            <Link
               key={action.label}
+              href={action.href}
               className="
                 flex items-center gap-3
                 rounded-2xl
@@ -42,20 +46,10 @@ export function QuickActions() {
               <span className="text-caption text-white">
                 {action.label}
               </span>
-            </button>
+            </Link>
           );
         })}
       </div>
-
-      <button
-        className="
-          mt-5 w-full
-          text-caption
-          text-[var(--secondary)]
-        "
-      >
-        View All Actions
-      </button>
     </aside>
   );
 }

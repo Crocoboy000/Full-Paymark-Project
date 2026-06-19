@@ -1,5 +1,10 @@
 "use client";
 
+import { useDashboardStore } from "@/store/dashboard.store";
+import EmptyState from "@/components/ui/EmptyState";
+import ErrorState from "@/components/ui/ErrorState";
+import LoadingState from "@/components/ui/LoadingState";
+
 import {
   Area,
   AreaChart,
@@ -9,9 +14,25 @@ import {
   XAxis,
 } from "recharts";
 
-import { revenueData } from "@/context/dashboardData";
-
 export function RevenueChartCard() {
+  const chartData = useDashboardStore((state) => state.chartData);
+  const chartDataLoading = useDashboardStore((state) => state.chartDataLoading);
+  const chartDataError = useDashboardStore((state) => state.chartDataError);
+  const summary = useDashboardStore((state) => state.summary);
+
+  if (chartDataLoading) return <LoadingState />;
+  if (chartDataError) return <ErrorState />;
+
+  if (chartData.transactionCount === 0) {
+    return (
+      <EmptyState
+        className="md:col-span-3 col-span-12 h-full"
+        title="No financial data"
+        message="Add income or expenses to generate insights."
+      />
+    );
+  }
+
   return (
     <article
       className="
@@ -25,35 +46,19 @@ export function RevenueChartCard() {
         p-6
       "
     >
-      <div className="mb-8 flex items-start justify-between">
-        <div>
-          <h3 className="text-sm text-white">
-            Financial Overview
-          </h3>
+      <div className="mb-8">
+        <h3 className="text-sm text-white">Financial Overview</h3>
 
-          <h2 className="mt-2 text-3xl font-semibold text-white">
-            $52,143.75
-          </h2>
+        <h2 className="mt-2 text-3xl font-semibold text-white">
+          ${summary?.totalBalance.toLocaleString()}
+        </h2>
 
-          <p className="text-[13px] text-[#606165]">
-            Total Balance
-          </p>
-        </div>
-
-        <div className="text-right">
-          <p className="text-sm text-emerald-400">
-            +6.41%
-          </p>
-
-          <p className="text-[12px] text-[#606165]">
-            vs last month
-          </p>
-        </div>
+        <p className="text-[13px] text-[#606165]">Total Balance</p>
       </div>
 
       <div className="h-[260px]">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={revenueData}>
+          <AreaChart data={chartData.data}>
             <defs>
               <linearGradient
                 id="incomeGradient"
@@ -62,16 +67,8 @@ export function RevenueChartCard() {
                 x2="0"
                 y2="1"
               >
-                <stop
-                  offset="0%"
-                  stopColor="#FF8975"
-                  stopOpacity={0.4}
-                />
-                <stop
-                  offset="100%"
-                  stopColor="#FF8975"
-                  stopOpacity={0}
-                />
+                <stop offset="0%" stopColor="#FF8975" stopOpacity={0.4} />
+                <stop offset="100%" stopColor="#FF8975" stopOpacity={0} />
               </linearGradient>
             </defs>
 

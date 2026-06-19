@@ -1,11 +1,17 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import RegisterForm from "@/components/features/auth/RegisterForm";
+
+export const metadata: Metadata = {
+  title: "Register",
+  description:
+    "Create your Paymark account today and start managing your finances with AI-powered insights, seamless transfers, and smart budgeting tools.",
+};
 
 export default function RegisterPage() {
   return (
     <>
 
-      {/* Left Side */}
       <div
         className="
           flex

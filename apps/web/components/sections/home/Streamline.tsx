@@ -19,8 +19,6 @@ function Streamline() {
       py-20
     ">
 
-      {/* Heading */}
-
       <div className="flex flex-col items-center gap-3">
 
         <h2 className="
@@ -47,8 +45,6 @@ function Streamline() {
 
       </div>
 
-
-      {/* Grid */}
 
       <div className="
         grid

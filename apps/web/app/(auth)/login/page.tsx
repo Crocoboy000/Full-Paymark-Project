@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import LoginForm from "@/components/features/auth/LoginFrom";
+
+export const metadata: Metadata = {
+  title: "Login",
+  description:
+    "Sign in to your Paymark account to access your dashboard, manage transactions, track investments, and monitor your finances securely.",
+};
 
 export default function LoginPage() {
   return (
@@ -12,7 +19,6 @@ export default function LoginPage() {
         h-vh
       "
     >
-      {/* Left Side */}
       <div
         className="
           flex

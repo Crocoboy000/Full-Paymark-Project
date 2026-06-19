@@ -93,8 +93,6 @@ py-24
 overflow-hidden
 ">
 
-{/* TITLE */}
-
 <h2 className="
 text-center
 text-h3
@@ -115,8 +113,6 @@ gsap-5
 items-center
 ">
 
-{/* LEFT IMAGE */}
-
 <div
 ref={imageRef}
 className="
@@ -136,14 +132,6 @@ w-50
 "
 >
 
-{/* <div className="
-absolute
-inset-0
-bg-gradient-to-t
-from-primary/20
-to-transparent
-"/> */}
-
 <img
 src={item.image}
 className="
@@ -155,8 +143,6 @@ object-cover
 
 </div>
 
-
-{/* CONTENT */}
 
 <div
 ref={contentRef}
@@ -204,8 +190,6 @@ pt-6
 </div>
 
 
-{/* PREVIEW IMAGE */}
-
 <div className="
 hidden
 lg:block
@@ -236,8 +220,6 @@ object-cover
 
 </div>
 
-
-{/* CONTROLS */}
 
 <div className="
 flex

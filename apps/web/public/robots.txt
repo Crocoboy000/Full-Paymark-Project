@@ -1,0 +1,29 @@
+# robots.txt for Paymark
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+
+# Sitemaps
+Sitemap: https://paymark.com/sitemap.xml
+
+# Crawl rules for different bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Crawl delay for polite crawling
+Crawl-Delay: 10

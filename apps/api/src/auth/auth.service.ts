@@ -22,7 +22,6 @@ export class AuthService {
 
   async register(dto: RegisterDto) {
 
-    console.log("DTO:", dto);
 
 
     const existing =
@@ -48,8 +47,27 @@ export class AuthService {
           lastName: dto.lastName,
           email: dto.email,
           passwordHash,
+          accounts: {
+            create: {
+              name: "Main Account",
+              type: "CHECKING",
+            },
+          },
+        },
+        include: {
+          accounts: true,
         },
       });
+
+    const mainAccount = user.accounts[0];
+
+    await this.prisma.notification.create({
+      data: {
+        userId: user.id,
+        title: 'Account Created',
+        message: `Your "${mainAccount.name}" (Checking) is ready. You can start sending and receiving money right away.`,
+      },
+    });
 
     const token =
       await this.generateAccessToken(

@@ -28,8 +28,7 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
             
             gsap.ticker.add(ticker);
             gsap.ticker.lagSmoothing(0);
-        } catch (error) {
-            console.warn('Error initializing Lenis:', error);
+        } catch {
             return;
         }
 
@@ -41,13 +40,11 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
                 if (lenis) {
                     lenis.destroy();
                 }
-            } catch (error) {
-                console.warn('Error cleaning up Lenis:', error);
+            } catch {
             }
         };
 
     }, []);
-// Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
   return (
     <div className="w-full h-full">
       {children}

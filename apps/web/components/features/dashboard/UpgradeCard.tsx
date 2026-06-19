@@ -10,7 +10,9 @@ export function UpgradeCard() {
         upCard
         relative overflow-hidden
         rounded-3xl
-        w-[90%]
+        w-[80%]
+        h-[20%]
+        mx-auto
         border border-light/20
         bg-[linear-gradient(135deg,#0E0E0E,#141414)]
         p-6
@@ -25,18 +27,22 @@ export function UpgradeCard() {
       />
 
       <div className="relative flex flex-col gap-2 z-10">
-
-          <PremiumLogo className="text-[#FF8975] size-10" />
+        <div className="flex items-center w-full gap-2 ">
+          <PremiumLogo className="text-[#FF8975] size-6" />
 
         <h3
           className="
-            text-caption
+            text-[14px]
             font-semibold
-            text-white
+            text-light
+            w-full
+            whitespace-nowrap
           "
         >
           Upgrade to Premium
         </h3>
+        </div>
+
 
         <p
           className="
@@ -48,15 +54,10 @@ export function UpgradeCard() {
           exclusive financial insights.
         </p> 
 
-        <DashboardButton
-          className="
-          mt-2
-        w-[60%]
 
-          "
-        >
+          <h3 className="mt-5 text-secondary underline hover:text-primary text-[12px]">
           Upgrade Now
-        </DashboardButton>
+          </h3>
       </div>
     </aside>
   );

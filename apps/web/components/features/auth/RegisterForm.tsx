@@ -17,6 +17,8 @@ import { useForm } from "@tanstack/react-form";
 import {
   LoginSchema,
 } from "@paymark/validations";
+import { useAuthStore } from "@/store/auth.store";
+
 
 import { useRouter } from "next/navigation";
 
@@ -34,7 +36,7 @@ const fields = [
   {
     name: "firstName",
     label: "First Name",
-    placeholder: "Croco",
+    placeholder: "First Name",
     icon: User,
     validator:
       RegisterSchema.shape.firstName,
@@ -43,7 +45,7 @@ const fields = [
   {
     name: "lastName",
     label: "Last Name",
-    placeholder: "Boy",
+    placeholder: "Last Name",
     icon: User,
     validator:
       RegisterSchema.shape.lastName,
@@ -52,7 +54,7 @@ const fields = [
   {
     name: "email",
     label: "Email Address",
-    placeholder: "john@example.com",
+    placeholder: "Email Address",
     icon: Mail,
     validator:
       RegisterSchema.shape.email,
@@ -66,56 +68,80 @@ const fields = [
 export default function RegisterForm() {
   const [showPassword, setShowPassword] =
     useState(false);
+
   const router = useRouter();
-  const [formError, setFormError] = useState("");
 
+  const [formError, setFormError] =
+    useState("");
 
+  const registerMutation =
+    useRegister();
 
-  const registerMutation = useRegister();
-
-const form = useForm({
-  defaultValues: {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  },
-
-onSubmit: async ({ value }) => {
-  setFormError("");
-
-  const result =
-    RegisterSchema.safeParse(value);
-
-  if (!result.success) {
-
-     return setFormError(result.error.issues[0]?.message);
-  }
-
-  try {
-    const data =
-      await registerMutation.mutateAsync(
-        result.data,
-      );
-
-    localStorage.setItem(
-      "accessToken",
-      data.accessToken,
+  const setAuth =
+    useAuthStore(
+      (state) => state.setAuth,
     );
 
-    router.push("/dashboard");
-  } catch (error) {
-    if (error instanceof Error) {
-      setFormError(error.message);
-    } else {
-      setFormError(
-        "Something went wrong",
-      );
-    }
-  }
-},
-});
+  const form = useForm({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+
+    onSubmit: async ({
+      value,
+    }) => {
+      setFormError("");
+
+      const result =
+        RegisterSchema.safeParse(
+          value,
+        );
+
+      if (
+        !result.success
+      ) {
+        return setFormError(
+          result.error
+            .issues[0]
+            ?.message,
+        );
+      }
+
+      try {
+        const data =
+          await registerMutation.mutateAsync(
+            result.data,
+          );
+
+        setAuth(
+          data,
+        );
+
+        router.push(
+          "/dashboard",
+        );
+      } catch (
+        error
+      ) {
+        if (
+          error instanceof
+          Error
+        ) {
+          setFormError(
+            error.message,
+          );
+        } else {
+          setFormError(
+            "Something went wrong",
+          );
+        }
+      }
+    },
+  });
 
   return (
     <section
@@ -125,13 +151,12 @@ onSubmit: async ({ value }) => {
         lg:w-5/12
         overflow-hidden
         rounded-4xl
-        border border-white/[0.06]
+        border border-light/5
         bg-dark
         p-8
         md:p-10
       "
     >
-      {/* Bottom Glow */}
       <div
         className="
           pointer-events-none
@@ -140,7 +165,6 @@ onSubmit: async ({ value }) => {
         "
       />
 
-      {/* Top Glow */}
       <div
         className="
           pointer-events-none
@@ -305,7 +329,6 @@ onSubmit: async ({ value }) => {
 </form.Field>
 
 
-          {/* Remember */}
           <div
             className="
             flex items-center

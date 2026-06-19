@@ -47,9 +47,7 @@ py-8
 '
 >
 
-{/* LEFT GRADIENT */}
-
-<div
+        <div
 className='
 md:flex
 hidden
@@ -66,9 +64,7 @@ to-transparent
 '
 />
 
-{/* RIGHT GRADIENT */}
-
-<div
+        <div
 className='
 md:flex
 hidden
@@ -96,9 +92,7 @@ opacity-50
 '
 >
 
-{/* first set */}
-
-{brands.map((logo,index)=>(
+        {brands.map((logo,index)=>(
 
 <Image
 key={index}
@@ -117,9 +111,7 @@ flex-shrink-0
 
 ))}
 
-{/* duplicated set */}
-
-{brands.map((logo,index)=>(
+        {brands.map((logo,index)=>(
 
 <Image
 key={`copy-${index}`}

@@ -1,7 +1,7 @@
 import { div } from 'motion/react-client'
 import React from 'react'
 
-function Input({ icon, placeholder, type, className, id, name, value, onChange }: { icon?: React.ReactNode, placeholder: string, type: string, className: string, id?: string, name: string, value?: string, onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
+function Input({ icon, placeholder, type, className, id, name, value, onChange, onKeyDown }: { icon?: React.ReactNode, placeholder: string, type: string, className?: string, id?: string, name: string, value?: string, onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void, onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void }) {
     return (
         <div className='flex justify-start gap-2 items-center min-w-50 relative border-[0.2] border-gray1/20 px-2 py-2 rounded-4xl '>
             <span>
@@ -16,6 +16,7 @@ function Input({ icon, placeholder, type, className, id, name, value, onChange }
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+                onKeyDown={onKeyDown}
             />
         </div>
     )
