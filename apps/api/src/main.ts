@@ -4,7 +4,7 @@ import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { rawBody: true });
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const frontendUrl = process.env.FRONTEND_URL;
   app.enableCors({ origin: frontendUrl, credentials: true });
   app.use('/stripe/webhook', express.raw({ type: '*/*' }));
   await app.listen(process.env.PORT ?? 8000);
