@@ -1,7 +1,8 @@
-
 name: Deploy
 on:
-  push:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
     branches: [main]
 
 env:
@@ -11,10 +12,14 @@ env:
 jobs:
   deploy:
     name: Deploy to Vercel
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    environment: "Production – full-paymark-project-web"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -29,16 +34,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Lint (turbo)
-        run: pnpm exec turbo lint --filter=paymark
-
-      - name: Type check
-        working-directory: ./apps/web
-        run: pnpm exec tsc --noEmit
-
-      - name: Build (turbo)
-        run: pnpm exec turbo build --filter=paymark
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
