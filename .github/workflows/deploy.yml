@@ -1,5 +1,5 @@
-name: Deploy
 
+name: Deploy
 on:
   push:
     branches: [main]
@@ -12,7 +12,6 @@ jobs:
   deploy:
     name: Deploy to Vercel
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,15 +30,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm exec turbo lint --filter=web
+      - name: Lint (turbo)
+        run: pnpm exec turbo lint --filter=paymark
 
       - name: Type check
         working-directory: ./apps/web
-        run: npx tsc --noEmit
+        run: pnpm exec tsc --noEmit
 
-      - name: Build
-        run: pnpm exec turbo build --filter=web
+      - name: Build (turbo)
+        run: pnpm exec turbo build --filter=paymark
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25

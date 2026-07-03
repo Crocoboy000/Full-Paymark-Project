@@ -1,5 +1,5 @@
-name: CI
 
+name: CI
 on:
   pull_request:
     branches: [main]
@@ -14,7 +14,6 @@ jobs:
   quality:
     name: Quality Checks
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,12 +32,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm exec turbo lint --filter=web
+      - name: Lint (turbo)
+        run: pnpm exec turbo lint --filter=paymark
 
       - name: Type check
         working-directory: ./apps/web
-        run: npx tsc --noEmit
+        run: pnpm exec tsc --noEmit
 
-      - name: Build
-        run: pnpm exec turbo build --filter=web
+      - name: Build (turbo)
+        run: pnpm exec turbo build --filter=paymark
