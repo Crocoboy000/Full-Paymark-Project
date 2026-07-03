@@ -12,7 +12,7 @@ function Blow() {
         <p className='text-[10px] text-light/60 text-center z-30 w-80 lg:text-caption lg:w-150'>We care a lot. And you’ll feel it in everything we do. With Rho, feel seen & taken care of across every step of the startup journey (not just your finances).</p>
         <UniqueButton className='mt-8 z-12' label="Send Code" href="/about" />
 
-        <Image src="/feature.svg" alt="blow" width={500} height={300} className='z-12 absolute top-12 right-6 w-50 sm:w-50 md:w-60 lg:w-75' />
+        <Image src="/Glowfeature.svg" alt="blow" width={500} height={300} className='z-12 absolute top-12 right-6 w-50 sm:w-50 md:w-60 lg:w-75' />
         <Image src="/info.svg" alt="blow" width={500} height={300} className='z-12 absolute bottom-1/12 left-8 w-70 sm:w-70 md:w-80 lg:bottom-3 lg:w-105' />
         <Image src="/transinfo.svg" alt="blow" width={500} height={300} className='z-12 absolute top-6 left-6 w-45 bottom-1/6 sm:w-50 md:w-60 lg:w-89' />
         <Image src="/transaction.svg" alt="blow" width={500} height={300} className='z-12 absolute bottom-25 right-32 w-80 hidden lg:flex' />

@@ -48,7 +48,7 @@ export const homeData = {
       href: "/",
       label: "Learn More",
       mainImage: "/finanimg.png",
-      accentImage: "/streamline.svg",
+      accentImage: "/SmallStreamline.svg",
     },
   ] satisfies FinancialCardItem[],
 
