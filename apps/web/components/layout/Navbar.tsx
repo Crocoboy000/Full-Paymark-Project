@@ -162,14 +162,14 @@ export default function Navbar() {
             ref={menuIconRef}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <MenuIcon className="w-6 h-6" />
+            <MenuIcon />
           </span>
 
           <span
             ref={closeIconRef}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <CloseIcon className="w-6 h-6" />
+            <CloseIcon />
           </span>
         </button>
       </div>

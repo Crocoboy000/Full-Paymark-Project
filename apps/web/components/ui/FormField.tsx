@@ -91,7 +91,7 @@ export function FormField({
         </div>
       </div>
 
-      {field.state.meta.errors[0] && (
+      {!!field.state.meta.errors[0] && (
         <p
           className="
             ml-4
@@ -101,7 +101,7 @@ export function FormField({
           "
         >
           {String(
-            field.state.meta.errors[0],
+            field.state.meta.errors[0] as string,
           )}
         </p>
       )}
