@@ -67,9 +67,9 @@ function Footer() {
                 rounded-full
 
                 border
-                border-white/[0.08]
+                border-white/8
 
-                bg-white/[0.02]
+                bg-white/2
 
                 flex
                 items-center
@@ -140,9 +140,10 @@ function Footer() {
               <div key={index} className="flex flex-col gap-5">
                 <h4
                   className="
-                  text-[15px]
-                  md:text-h5
-                  font-medium
+                  text-[12px]
+                  md:text-[14px]
+                  whitespace-nowrap
+                
                 "
                 >
                   {section.title}
@@ -158,7 +159,6 @@ function Footer() {
                       text-left
 
                       text-[12px]
-                      md:text-caption
 
                       text-light/70
 

@@ -22,15 +22,17 @@ function Pricing() {
     flex-col
     items-center
     gap-16
-    px-8
+    px-1
+    md:px-5
     py-24
     overflow-hidden
     ">
 
+
       <div className="flex flex-col gap-4 items-center">
 
         <h2 className="
-        text-h3
+        text-h4
         md:text-h2
         lg:text-h2
         text-center
@@ -39,11 +41,16 @@ function Pricing() {
         </h2>
 
         <p className="
-        text-[12px]
-        md:text-body
+        text-[10px]
+        sm:text-[13px]
+
+        md:text-caption
         text-gray1
         text-center
-        w-90
+        w-80
+        sm:w-100
+        md:w-150
+
         ">
           Access robust banking services for free,
           with advanced financial workflows
@@ -52,6 +59,8 @@ function Pricing() {
 
       </div>
 
+
+      {/* Cards */}
 
       <div className="
       grid
@@ -94,6 +103,8 @@ function Pricing() {
           `}
           >
 
+            {/* Featured Glow */}
+
             {plan.featured && (
 
               <>
@@ -120,6 +131,8 @@ function Pricing() {
                 bg-secondary/10
                 blur-[120px]
                 "/>
+
+                {/* floating squares */}
 
                 <div className="
                 absolute
@@ -157,6 +170,8 @@ function Pricing() {
               ">
                 {plan.desc}
               </p>
+
+              {/* Price */}
 
               <div className="
               flex

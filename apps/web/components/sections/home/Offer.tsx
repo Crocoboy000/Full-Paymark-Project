@@ -27,8 +27,8 @@ function Offer() {
   return (
     <section ref={Offerref} className='max-w-7xl mx-auto flex z-15 h-full text-light flex-col items-center mt-25 justify-between overflow-hidden'>
         <div className='space-y-4 flex flex-col items-center justify-center z-18'>
-      <h2 className='text-h3 text-center font-medium'>Apply in Under 10 minutes today!</h2>
-      <p className='text-[12px] md:text-caption lg:text-body'>Join over 1,000 businesses already benefiting from Paymark.</p>
+      <h2 className='text-h4 sm:text-h3 md:text-h2 text-center font-medium w-90 sm:w-150 md:w-190'>Apply in Under 10 minutes today!</h2>
+      <p className='text-[10px] text-light/70 sm:text-[13px] md:text-caption lg:text-body'>Join over 1,000 businesses already benefiting from Paymark.</p>
       <UniqueButton label="Apply Now" href="/apply" />
         </div>
     <div className="w-full relative cards flex justify-center z-15 items-center">

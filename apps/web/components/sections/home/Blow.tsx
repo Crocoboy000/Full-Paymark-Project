@@ -8,8 +8,8 @@ function Blow() {
         <div className=" bg-gradient-to-r from-transparent from-20% filter blur-[90px] to-[#FFAA58] absolute top-1/3 w-50 rounded-full h-50 z-0"></div>
         <div className=" bg-gradient-to-l from-transparent from-20% filter blur-[90px] to-[#FF584E] absolute top-1/3 w-50   rounded-full h-50 z-0"></div>
         <div className=" bg-gradient-to-b from-dark from-10% via-transparent via-80% to-dark absolute inset-0 z-8"></div>
-        <h2 className='text-h3 font-medium text-center z-30 w-120 md:w-140 md:text-[38px] lg:text-h2 lg:w-160'>Who Says a Banking Platform Can't Blow Your Mind?</h2>
-        <p className='text-[12px] text-light/60 text-center z-30 w-110 lg:text-caption lg:w-150'>We care a lot. And you’ll feel it in everything we do. With Rho, feel seen & taken care of across every step of the startup journey (not just your finances).</p>
+        <h2 className='text-h5 font-medium text-center z-30 w-80 sm:w-100 sm:text-h4 md:w-140 md:text-[38px] lg:text-h3 lg:w-120'>Who Says a Banking Platform Can't Blow Your Mind?</h2>
+        <p className='text-[10px] text-light/60 text-center z-30 w-80 lg:text-caption lg:w-150'>We care a lot. And you’ll feel it in everything we do. With Rho, feel seen & taken care of across every step of the startup journey (not just your finances).</p>
         <UniqueButton className='mt-8 z-12' label="Send Code" href="/about" />
 
         <Image src="/feature.svg" alt="blow" width={500} height={300} className='z-12 absolute top-12 right-6 w-50 sm:w-50 md:w-60 lg:w-75' />

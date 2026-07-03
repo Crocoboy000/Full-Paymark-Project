@@ -15,9 +15,13 @@ function Streamline() {
       items-center
       gap-16
       w-full
-      px-5
-      py-20
+      md:px-5
+      px-1
+      md:py-16
+      py-12
     ">
+
+      {/* Heading */}
 
       <div className="flex flex-col items-center gap-3">
 
@@ -46,6 +50,8 @@ function Streamline() {
       </div>
 
 
+      {/* Grid */}
+
       <div className="
         grid
         grid-cols-1
@@ -61,7 +67,8 @@ function Streamline() {
             key={index}
             className={`
               relative
-              rounded-[32px]
+              rounded-xl
+              md:rounded-3xl
               overflow-hidden
               border
               border-white/5

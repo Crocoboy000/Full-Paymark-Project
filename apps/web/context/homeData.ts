@@ -31,7 +31,7 @@ export const homeData = {
       desc: "Make monthly contributions to your savings to prepare for significant expenses (like taxes) and leverage profits to support your growth.",
       href: "/",
       label: "Learn More",
-      mainImage: "/Family.png",
+      mainImage: "/family.png",
       accentImage: "/fund.svg",
     },
     {

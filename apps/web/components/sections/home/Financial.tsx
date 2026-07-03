@@ -31,23 +31,20 @@ function Financial() {
         },
       });
 
+      gsap.set([".firstlogo", ".lastlogo"], { autoAlpha: 0, y: -80 });
 
-      gsap.set([".firstlogo", ".lastlogo"], { autoAlpha: 0,y:-80 });
-      
       cards.forEach((card, i) => {
         const title = card.querySelector(".financial-title");
         const desc = card.querySelector(".financial-desc");
         const btn = card.querySelector(".financial-btn");
         const main = card.querySelector(".financial-card-main-img");
         const accent = card.querySelector(".financial-card-accent-img");
-        
+
         const content = [main, title, desc, accent, btn];
-        
-        const tl = gsap.timeline({
-        });
 
-          if(i===0){
+        const tl = gsap.timeline({});
 
+        if (i === 0) {
           tl.to(
             ".firstlogo",
             {
@@ -58,38 +55,29 @@ function Financial() {
             },
             0
           );
-
-           }
-
-            else if(i===1){
-
-                    tl.to(
-                    ".lastlogo",
-                    {
-                    autoAlpha:1,
-                    y:-15,
-                    duration:.6,
-                    ease:"expo.out"
-                    },
-                    0
-                    )
-
-          }
-
-            else{
-
-            tl.to(
-            ".firstlogo,.lastlogo",
+        } else if (i === 1) {
+          tl.to(
+            ".lastlogo",
             {
-            autoAlpha:0,
-            y:-80,
-            duration:.6,
-            ease:"expo.out"
+              autoAlpha: 1,
+              y: -15,
+              duration: 0.6,
+              ease: "expo.out",
             },
             0
-          )
-
-          }
+          );
+        } else {
+          tl.to(
+            ".firstlogo,.lastlogo",
+            {
+              autoAlpha: 0,
+              y: -80,
+              duration: 0.6,
+              ease: "expo.out",
+            },
+            0
+          );
+        }
 
         cards.slice(0, i).forEach((prev, idx) => {
           const depth = i - idx;
@@ -128,27 +116,15 @@ function Financial() {
   return (
     <section className="text-light max-w-7xl z-20 relative flex flex-col justify-between items-center w-full">
       <div className="flex flex-col items-center justify-center gap-2">
-        <h2 className="text-h3 font-normal text-center">Bank Complete Confidence</h2>
-        <p className="text-[14px] text-light/60 text-center w-110">
+        <h2 className="text-h4 sm:text-h3 md:text-h2 font-normal text-center">Bank Complete Confidence</h2>
+        <p className="text-[10px] sm:text-[12px] sm:w-110 md:text-body md:w-140 text-light/60 text-center w-80">
           Enjoy high-yield accounts, unlimited 2% cashback cards for Pro customers, and flexible working capital to power your business.
         </p>
       </div>
 
       <div
         ref={containerRef}
-        className="
-          relative
-          w-full
-          h-[520px]
-          md:h-[620px]
-          flex
-          items-center
-          justify-center
-          max-w-[95%]
-          sm:max-w-[80%]
-          md:max-w-[90%]
-          mx-auto
-        "
+        className="relative w-full h-[520px] md:h-[620px] flex items-center justify-center max-w-[95%] sm:max-w-[80%] md:max-w-[90%] mx-auto"
       >
         <Image
           src="/logoback.svg"
@@ -157,6 +133,7 @@ function Financial() {
           height={100}
           className="absolute firstlogo -top-70 w-60 -left-25 z-0 opacity-30"
         />
+
         <Image
           src="/logoback.svg"
           alt="financial"
