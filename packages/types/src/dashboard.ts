@@ -18,6 +18,7 @@ export type SpendingCategory = {
 
 export type RecentTransaction = {
   id: string;
+  description: string;
   amount: number;
   type: TransactionTypeEnum;
   category?: string;

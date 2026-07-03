@@ -3,7 +3,15 @@ import {
   BadgeDollarSign,
   ReceiptText,
   TrendingUp,
+  type LucideIcon,
 } from "lucide-react";
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  "Total Balance": Wallet,
+  "Total Income": BadgeDollarSign,
+  "Total Expenses": ReceiptText,
+  "Net Worth": TrendingUp,
+};
 
 type StatCardProps = {
   title: string;
@@ -14,26 +22,7 @@ export default function StatCard({
   title,
   value,
 }: StatCardProps) {
-  const getIcon = () => {
-    switch (title) {
-      case "Total Balance":
-        return Wallet;
-
-      case "Total Income":
-        return BadgeDollarSign;
-
-      case "Total Expenses":
-        return ReceiptText;
-
-      case "Net Worth":
-        return TrendingUp;
-
-      default:
-        return Wallet;
-    }
-  };
-
-  const Icon = getIcon();
+  const Icon = ICON_MAP[title] ?? Wallet;
 
   return (
     <article

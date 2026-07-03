@@ -112,11 +112,6 @@ const [senderAccountId, setSenderAccountId] =
     }
   };
 
-  const handlePreset = (v: number) => {
-    setAmountRaw(String(v));
-    setErrors((s) => ({ ...s, amount: undefined }));
-  };
-
   const handleSendClick = () => {
     const amountErr = validateAmount(amountRaw);
     setErrors((s) => ({ ...s, amount: amountErr || undefined }));
@@ -143,8 +138,8 @@ const [senderAccountId, setSenderAccountId] =
       setDescription("");
       setCurrency("USD");
       clear();
-    } catch (err: any) {
-      setToast({ type: "error", msg: err?.message || "Transfer failed" });
+    } catch (err: unknown) {
+      setToast({ type: "error", msg: (err as Error)?.message || "Transfer failed" });
     }
   };
 

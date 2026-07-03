@@ -1,6 +1,7 @@
 "use client"
 
 import { useDashboardStore } from "@/store/dashboard.store";
+import type { RecentTransaction } from "@paymark/types";
 
 import EmptyState from "@/components/ui/EmptyState";
 
@@ -78,7 +79,7 @@ export function RecentActivity() {
       </header>
 
       <ul className="space-y-5">
-        {data.map((tx: any) => (
+        {data.map((tx: RecentTransaction) => (
           <li
             key={tx.id}
             className="flex justify-between"

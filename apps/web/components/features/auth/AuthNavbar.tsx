@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { PremiumLogo } from "@/components/ui/Icons";
-import Image from "next/image";
-
 
 import { DashboardButton } from "@/components/ui/DashboardButton";
-import UniqueButton from "@/components/ui/Button";
 
 export default function AuthNavbar() {
   return (
@@ -34,7 +31,7 @@ export default function AuthNavbar() {
       </Link>
       <div className="flex items-center gap-4">
       <p className="text-[12px] hidden md:flex text-gray1">
-       Don't Have An Account?
+       Don&apos;t Have An Account?
       </p>
       <DashboardButton className="h-9 w-35">
         <Link href="/register" className="absolute z-50 inset-0 flex items-center justify-center">

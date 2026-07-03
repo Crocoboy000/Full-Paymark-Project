@@ -15,7 +15,7 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
 
         try {
             lenis = new Lenis({
-                prevent: (node: any) => node.classList.contains('lenis-prevent'),
+                prevent: (node: Element) => node.classList.contains('lenis-prevent'),
             });
             
             lenis.on('scroll', ScrollTrigger.update);

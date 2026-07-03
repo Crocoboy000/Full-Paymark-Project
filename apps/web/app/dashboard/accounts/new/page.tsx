@@ -8,7 +8,7 @@ import {
   ArrowLeft,
   CheckCircle2,
   ChevronRight,
-  ShieldCheck,
+
   TrendingUp,
   CreditCard,
   PiggyBank,
@@ -184,7 +184,7 @@ export default function CreateAccountPage() {
               </p>
 
               <h1 className="text-h4 font-semibold text-light">
-                Let's set things up
+                Let&apos;s set things up
               </h1>
 
               <p className="mt-1 text-caption text-gray3">
@@ -257,7 +257,7 @@ export default function CreateAccountPage() {
                 </div>
 
                 <p className="mt-1.5 pl-1 text-[11px] text-gray3/50">
-                  Pick a name you'll instantly recognise at a glance
+                  Pick a name you&apos;ll instantly recognise at a glance
                 </p>
               </div>
 

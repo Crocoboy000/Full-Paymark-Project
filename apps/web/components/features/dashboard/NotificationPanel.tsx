@@ -104,9 +104,14 @@ export default function NotificationPanel() {
   }, []);
 
   useEffect(() => {
-    fetchData();
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 0);
     const interval = setInterval(fetchData, 15000);
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, [fetchData]);
 
   const handleMarkRead = async (id: string) => {

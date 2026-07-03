@@ -2,8 +2,6 @@
 
 import Link from 'next/link';
 import { useRef } from 'react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 
 interface UniqueButtonProps {
   label: string;
@@ -16,8 +14,6 @@ export default function UniqueButton({ label, href, className }: UniqueButtonPro
   const containerRef = useRef<HTMLAnchorElement>(null);
   const wordsRef     = useRef<(HTMLSpanElement | null)[]>([]);
   const glowRef      = useRef<HTMLSpanElement>(null);
-  const iconRef      = useRef<HTMLSpanElement>(null);
-
   const words = label.split(' ');
 
   return (

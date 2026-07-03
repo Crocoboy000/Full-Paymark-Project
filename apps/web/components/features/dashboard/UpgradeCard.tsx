@@ -1,8 +1,6 @@
 
 import { PremiumLogo } from "../../ui/Icons";
 
-import { DashboardButton } from "../../ui/DashboardButton";
-
 export function UpgradeCard() {
   return (
     <aside

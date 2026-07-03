@@ -13,15 +13,16 @@ export function useRegister() {
     ) => {
       try {
         return await register(data);
-      } catch (error: any) {
-        if (!error.response) {
+      } catch (error: unknown) {
+        const err = error as { response?: { data?: { message?: string } } };
+        if (!err.response) {
           throw new Error(
             "Unable to connect to server",
           );
         }
 
         throw new Error(
-          error.response.data.message ||
+          err.response.data?.message ||
             "Registration failed",
         );
       }

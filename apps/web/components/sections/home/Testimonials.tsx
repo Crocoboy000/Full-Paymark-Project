@@ -74,6 +74,7 @@ function Testimonials() {
           {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" /> */}
           <img
             src={item.image}
+            alt={item.title}
             className="w-full h-full object-cover"
           />
         </div>
@@ -87,6 +88,7 @@ function Testimonials() {
             
                       <img
             src={item.image}
+            alt={item.title}
             className="w-15 rounded-full flex sm:hidden"
           />
           <span>
@@ -95,7 +97,7 @@ function Testimonials() {
           </h3>
 
           <p className="text-[12px] md:text-caption lg:text-body text-light/70 leading-relaxed">
-            "{item.review}"
+            &quot;{item.review}&quot;
           </p>
 
           <p className="text-[12px] md:text-caption text-light/60 pt-6">{item.author}</p>
@@ -104,6 +106,7 @@ function Testimonials() {
         <div className="hidden lg:block relative rounded-[28px] overflow-hidden border border-white/5 h-[320px] opacity-80 scale-50">
           <img
             src={testimonials[(current + 1) % testimonials.length].image}
+            alt={testimonials[(current + 1) % testimonials.length].title}
             className="w-full h-full object-cover"
           />
         </div>

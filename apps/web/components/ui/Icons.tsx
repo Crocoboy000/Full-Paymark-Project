@@ -1,6 +1,6 @@
 
 
-export function MenuIcon({ className }: { className: string }) {
+export function MenuIcon() {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 8H21M3 12H21M3 16H21" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
@@ -9,7 +9,7 @@ export function MenuIcon({ className }: { className: string }) {
     )
 }
 
-export function CloseIcon({ className }: { className: string }) {
+export function CloseIcon() {
     return (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 18L18 6M18 18L6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" />

@@ -1,4 +1,3 @@
-import { div } from 'motion/react-client'
 import React from 'react'
 
 function Input({ icon, placeholder, type, className, id, name, value, onChange, onKeyDown }: { icon?: React.ReactNode, placeholder: string, type: string, className?: string, id?: string, name: string, value?: string, onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void, onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void }) {

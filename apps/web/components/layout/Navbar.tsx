@@ -108,7 +108,7 @@ export default function Navbar() {
   useEffect(() => {
     const tl = tlRef.current;
     if (!tl) return;
-    isOpen ? tl.play() : tl.reverse();
+    if (isOpen) tl.play(); else tl.reverse();
   }, [isOpen]);
 
   const toggle = () => setIsOpen((prev) => !prev);

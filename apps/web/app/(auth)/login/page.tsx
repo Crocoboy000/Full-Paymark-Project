@@ -50,7 +50,7 @@ export default function LoginPage() {
         >
           Welcome Back
           <br />
-          Let's continue your
+          Let&apos;s continue your
           <span className="text-primary">
             {" "} Financial Journey
           </span>

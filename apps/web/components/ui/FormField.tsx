@@ -3,7 +3,7 @@
 import { Eye, EyeOff } from "lucide-react";
 
 type FormFieldProps = {
-  field: any;
+  field: { state: { value: string; meta: { errors: unknown[] } }; handleChange: (e: string) => void; handleBlur: () => void; name: string };
   label: string;
   placeholder: string;
   icon: React.ReactNode;
@@ -49,7 +49,7 @@ export function FormField({
           {icon}
 
           <input
-            type={field.name === 'email' ? 'email' : 'text' as any}
+            type={type}
             value={field.state.value}
             onChange={(e) =>
               field.handleChange(

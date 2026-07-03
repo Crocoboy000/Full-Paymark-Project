@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 import {
-  Eye,
-  EyeOff,
   Mail,
   Lock,
 } from "lucide-react";
@@ -14,9 +12,7 @@ import { RegisterSchema } from "@paymark/validations";
 
 import { useForm } from "@tanstack/react-form";
 
-import {
-  LoginSchema,
-} from "@paymark/validations";
+
 import { useAuthStore } from "@/store/auth.store";
 
 
@@ -34,7 +30,7 @@ import { FormField } from "@/components/ui/FormField";
 
 const fields = [
   {
-    name: "firstName",
+    name: "firstName" as const,
     label: "First Name",
     placeholder: "First Name",
     icon: User,
@@ -43,7 +39,7 @@ const fields = [
   },
 
   {
-    name: "lastName",
+    name: "lastName" as const,
     label: "Last Name",
     placeholder: "Last Name",
     icon: User,
@@ -52,7 +48,7 @@ const fields = [
   },
 
   {
-    name: "email",
+    name: "email" as const,
     label: "Email Address",
     placeholder: "Email Address",
     icon: Mail,
@@ -209,7 +205,7 @@ export default function RegisterForm() {
   return (
     <form.Field
       key={input.name}
-      name={input.name as any}
+      name={input.name}
       
       validators={{
         onChange: ({ value }) => {

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
-import { Loader2, ArrowLeft, Wallet, Plus, CheckCircle, XCircle } from "lucide-react";
+import { Loader2, ArrowLeft, Plus, CheckCircle, XCircle } from "lucide-react";
 import { useDashboardStore } from "@/store/dashboard.store";
 import { useCreateCheckoutSession } from "@/hooks/payment/use-create-checkout-session";
 import { api } from "@/lib/api";
@@ -38,7 +38,9 @@ export default function WalletPage() {
         });
     }
     if (cancelled === "true") {
-      setToast({ type: "error", msg: "Payment was cancelled. No charges were made." });
+      queueMicrotask(() => {
+        setToast({ type: "error", msg: "Payment was cancelled. No charges were made." });
+      });
     }
   }, [success, cancelled, sessionId, queryClient]);
 
@@ -46,7 +48,9 @@ export default function WalletPage() {
 
   useEffect(() => {
     if (defaultAccount && !accountId) {
-      setAccountId(defaultAccount.id);
+      queueMicrotask(() => {
+        setAccountId(defaultAccount.id);
+      });
     }
   }, [defaultAccount, accountId]);
 
@@ -68,8 +72,9 @@ export default function WalletPage() {
     try {
       const result = await checkoutMutation.mutateAsync({ amount, accountId });
       window.location.href = result.url;
-    } catch (err: any) {
-      setToast({ type: "error", msg: err?.response?.data?.message || err?.message || "Failed to create payment session." });
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { message?: string } }; message?: string };
+      setToast({ type: "error", msg: e?.response?.data?.message || e?.message || "Failed to create payment session." });
     }
   };
 
