@@ -1,6 +1,7 @@
 
 import { homeData } from "@/context/homeData";
 import Image from "next/image";
+import { cn } from '@/lib/utils';
 
 const { cardsList } = homeData;
 
@@ -75,7 +76,7 @@ function Streamline() {
               border-white/5
               max-w-[80%]
               sm:max-w-[55%]
-              md:max-w-full
+              md:min-w-full
               mx-auto
 
               ${
@@ -86,12 +87,11 @@ function Streamline() {
             `}
           >
 
-            <div className="relative w-full aspect-[1038/634]">
+            <div className={cn("relative w-full", index === 2 ? "aspect-8/2" : " aspect-4/2")}>
               <Image
                 src={card.img}
                 alt={card.title}
                 fill
-                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 900px"
                 quality={100}
                 className="object-cover"
               />
@@ -102,6 +102,7 @@ function Streamline() {
               flex
               flex-col
               gap-2
+              text-center
             ">
 
               <h3 className="
