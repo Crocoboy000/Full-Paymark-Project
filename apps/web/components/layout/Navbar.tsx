@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { MenuIcon, CloseIcon, ShopIcon } from '../ui/Icons';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import UniqueButton from '@/components/ui/Button';
 import { homeData } from '@/context/homeData';
 import { scrollToSection } from '@/utils/scrollToSection';
@@ -134,7 +135,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="hidden md:flex items-center w-full justify-around px-6 py-4 max-w-7xl mx-auto z-10 text-light">
-          <img src="/logo.svg" alt="Logo" />
+          <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={100} priority />
 
         <ul className="flex gap-6">
           {navItems.filter((item) => !item.additional).map(({ label, link }) => (
@@ -142,18 +143,18 @@ export default function Navbar() {
               key={label}
               className="hover:text-blue-600 text-caption font-normal transition-colors duration-200"
             >
-              <a href={link} onClick={(e) => handleNavClick(e, link)}>
+              <Link href={link} onClick={(e) => handleNavClick(e, link)}>
               {label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
           
 
           <div className='flex justify-between items-center gap-5'>
-            <a href="/#offer" onClick={(e) => handleNavClick(e, '/#offer')}>
+            <Link href="/#offer" onClick={(e) => handleNavClick(e, '/#offer')}>
               <ShopIcon className="w-6 h-6" />
-            </a>
+            </Link>
 
             <Link href="/login">
             <span className='text-caption '>Login</span>
@@ -166,7 +167,7 @@ export default function Navbar() {
       </nav>
 
       <div className="md:hidden relative z-[60] flex items-center justify-between px-6 py-4 text-light">
-        <img src="/logo.svg" alt="Logo" />
+        <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={100} />
 
         <button
           onClick={toggle}

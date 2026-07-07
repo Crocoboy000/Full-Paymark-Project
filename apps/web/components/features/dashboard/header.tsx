@@ -10,6 +10,7 @@ import { useDashboardStore } from "@/store/dashboard.store";
 import { useAuthStore } from "@/store/auth.store";
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
+import Image from "next/image";
 
 
 export default function Header() {
@@ -112,9 +113,12 @@ export default function Header() {
           <NotificationPanel />
 
           <div className="flex items-center gap-3">
-            <img
+            <Image
               src="/James.png"
               alt="User Avatar"
+              width={44}
+              height={44}
+              quality={100}
               className="
                 size-11
                 rounded-full

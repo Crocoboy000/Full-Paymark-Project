@@ -1,6 +1,7 @@
 'use client'
 import { gsap } from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import Lenis from 'lenis';
 
 gsap.registerPlugin(ScrollToPlugin)
 
@@ -17,7 +18,7 @@ export function scrollToSection(href: string, delay: number = 0) {
   const el = document.getElementById(id)
   if (!el) return
 
-  const lenis = (window as any).__lenis as {
+  const lenis = (window as unknown as { __lenis: Lenis | null | undefined }).__lenis as {
     scrollTo: (
       target: Element | string,
       opts?: {

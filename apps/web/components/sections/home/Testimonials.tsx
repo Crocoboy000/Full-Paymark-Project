@@ -3,6 +3,8 @@
 import { useState, useRef } from "react";
 import gsap from "gsap";
 import { homeData } from "@/context/homeData";
+import Image from "next/image";
+
 
 const { testimonials } = homeData;
 
@@ -72,11 +74,7 @@ function Testimonials() {
           className="relative hidden sm:flex rounded-[28px] overflow-hidden border border-white/5 lg:w-full lg:h-full md:w-70 md:h-70 sm:h-60 sm:w-60 h-50 w-50"
         >
           {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" /> */}
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover"
-          />
+          <Image src={item.image} alt={item.title} loading="lazy" quality={100} className="w-full h-full object-cover" width={280} height={280} />
         </div>
 
 
@@ -86,9 +84,12 @@ function Testimonials() {
         >
           <h3 className="text-caption sm:text-h5 flex gap-8 items-center justify-center md:text-h4">
             
-                      <img
+                      <Image
             src={item.image}
             alt={item.title}
+            width={60}
+            height={60}
+            quality={100}
             className="w-15 rounded-full flex sm:hidden"
           />
           <span>
@@ -104,9 +105,12 @@ function Testimonials() {
         </div>
 
         <div className="hidden lg:block relative rounded-[28px] overflow-hidden border border-white/5 h-[320px] opacity-80 scale-50">
-          <img
+          <Image
             src={testimonials[(current + 1) % testimonials.length].image}
             alt={testimonials[(current + 1) % testimonials.length].title}
+            width={280}
+            height={320}
+            quality={100}
             className="w-full h-full object-cover"
           />
         </div>

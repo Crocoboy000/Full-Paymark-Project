@@ -18,7 +18,7 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
                 prevent: (node: Element) => node.classList.contains('lenis-prevent'),
             });
 
-            ;(window as any).__lenis = lenis;
+            (window as unknown as { __lenis: Lenis | null }).__lenis = lenis;
             
             lenis.on('scroll', ScrollTrigger.update);
             
@@ -36,8 +36,8 @@ function SmoothScroll({ children }: { children: React.ReactNode }) {
 
         return () => {
             try {
-                if ((window as any).__lenis === lenis) {
-                    delete (window as any).__lenis;
+                if ((window as unknown as { __lenis: Lenis | null }).__lenis === lenis) {
+                    delete (window as unknown as { __lenis: Lenis | null | undefined }).__lenis;
                 }
                 if (ticker) {
                     gsap.ticker.remove(ticker);

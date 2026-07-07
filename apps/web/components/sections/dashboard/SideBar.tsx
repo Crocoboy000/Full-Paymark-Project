@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import gsap from 'gsap';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 
 gsap.registerPlugin(useGSAP);
@@ -237,7 +238,7 @@ className="
     "
     >
         <div className='flex justify-between items-center px-5'>
-                 <img src="/logo.svg" alt="Logo" className={cn("logo transition-all duration-300",expanded?"":"hidden")} />
+                 <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={100} className={cn("logo transition-all duration-300",expanded?"":"hidden")} />
                  <button
   onClick={toggleSidebar}
   className="

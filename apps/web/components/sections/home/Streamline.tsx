@@ -1,5 +1,6 @@
 
 import { homeData } from "@/context/homeData";
+import Image from "next/image";
 
 const { cardsList } = homeData;
 
@@ -85,13 +86,16 @@ function Streamline() {
             `}
           >
 
-            <img
-              src={card.img}
-              alt={card.title}
-              className="
-               w-full
-              "
-            />
+            <div className="relative w-full aspect-[1038/634]">
+              <Image
+                src={card.img}
+                alt={card.title}
+                fill
+                sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 900px"
+                quality={100}
+                className="object-cover"
+              />
+            </div>
 
             <div className="
               p-6
