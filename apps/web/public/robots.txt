@@ -4,7 +4,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /dashboard/
 
 # Sitemaps
 Sitemap: https://paymark.com/sitemap.xml
