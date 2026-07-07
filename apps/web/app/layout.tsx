@@ -61,26 +61,18 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: "/og-image.png",
+        url: "/chart.png",
         width: 1200,
         height: 630,
         alt: SITE_NAME,
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE_NAME} - Modern Financial Management Platform`,
-    description: SITE_DESCRIPTION,
-    images: ["/og-image.png"],
-    creator: "@paymark",
-  },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/logoback.svg", sizes: "any" },
+      { url: "/logoback.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-touch-icon.png" }],
   },
   manifest: "/manifest.json",
   appleWebApp: {
@@ -133,8 +125,7 @@ export default function RootLayout({
                 email: "support@paymark.com",
               },
               sameAs: [
-                "https://twitter.com/paymark",
-                "https://linkedin.com/company/paymark",
+                "https://paymark.framer.website/",
               ],
             }),
           }}
