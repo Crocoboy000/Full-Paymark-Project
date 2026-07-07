@@ -42,6 +42,8 @@ export default function FinancialCard({
             alt='financial card main'
             width={500}
             height={500}
+            quality={75}
+            loading='lazy'
             className='financial-card-main-img  h-full w-full object-contain'
           />
           <Image
@@ -49,6 +51,8 @@ export default function FinancialCard({
             alt='financial card accent'
             width={500}
             height={500}
+            quality={75}
+            loading='lazy'
             className='financial-card-accent-img  w-14 md:w-16 lg:w-20 absolute -left-4 md:-left-5 bottom-3 md:bottom-4 lg:bottom-5'
           />
         </div>
