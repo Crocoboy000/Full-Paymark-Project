@@ -135,7 +135,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="hidden md:flex items-center w-full justify-around px-6 py-4 max-w-7xl mx-auto z-10 text-light">
-          <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={100} priority />
+          <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={75} priority />
 
         <ul className="flex gap-6">
           {navItems.filter((item) => !item.additional).map(({ label, link }) => (
@@ -167,7 +167,7 @@ export default function Navbar() {
       </nav>
 
       <div className="md:hidden relative z-[60] flex items-center justify-between px-6 py-4 text-light">
-        <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={100} />
+        <Image src="/logo.svg" alt="Logo" width={107} height={24} quality={75} />
 
         <button
           onClick={toggle}

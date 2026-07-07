@@ -75,25 +75,25 @@ function Streamline() {
               border
               border-white/5
               max-w-[80%]
-              sm:max-w-[55%]
               md:min-w-full
               mx-auto
 
               ${
                 index === 2
-                  ? " md:col-span-2"
-                  : ""
+                  ? "md:col-span-2"
+                  : "col-span-1"
               }
             `}
           >
 
-            <div className={cn("relative w-full", index === 2 ? "aspect-8/2" : " aspect-4/2")}>
+            <div className={cn("relative w-full")}>
               <Image
                 src={card.img}
                 alt={card.title}
-                fill
-                quality={100}
-                className="object-cover"
+                width={630}
+                height={630}
+                quality={75}
+                className="object-cover w-full h-full"
               />
             </div>
 

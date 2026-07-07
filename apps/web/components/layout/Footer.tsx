@@ -102,6 +102,8 @@ function Footer() {
                 src="/logo.svg"
                 alt="Paymark Logo"
                 fill
+
+                quality={75}
                 className="object-contain object-left"
               />
             </div>

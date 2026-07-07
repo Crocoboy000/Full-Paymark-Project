@@ -70,7 +70,8 @@ export default function Home() {
                 priceCurrency: "USD",
                 name: "Starter Plan",
                 description:
-                  "Full-featured banking essentials with 1.5% Cash Back Rewards",
+                  "Full-featured banking essentials with 1.5% Cash Back Rewards,Transfer and save money between your accounts and your friends accounts by easy way and no cost",
+                  
               },
               {
                 "@type": "Offer",

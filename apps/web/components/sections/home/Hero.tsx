@@ -90,7 +90,7 @@ function Hero() {
         <Image
           alt="Card"
           src="/MainCard.svg"
-          className="main-card w-[65%] sm:w-[56%] md:w-[50%] lg:w-[40%] z-5"
+          className="main-card w-[65%] h-auto sm:w-[56%] md:w-[50%] lg:w-[40%] z-5"
           width={500}
           height={300}
         />
@@ -103,7 +103,7 @@ function Hero() {
         />
       </div>
 
-      <Image src="/pattern.svg" alt="Wave" className='inset-0 h-full w-full bottom-1/6 absolute rounded-3xl' width={1440} height={500} />
+      <Image src="/pattern.svg" alt="Wave" loading="eager" className='inset-0 h-full w-full bottom-1/6 absolute rounded-3xl' width={1440} height={500} />
     </section>
   );
 }

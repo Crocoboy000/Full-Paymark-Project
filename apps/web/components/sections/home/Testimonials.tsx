@@ -74,7 +74,7 @@ function Testimonials() {
           className="relative hidden sm:flex rounded-[28px] overflow-hidden border border-white/5 lg:w-full lg:h-full md:w-70 md:h-70 sm:h-60 sm:w-60 h-50 w-50"
         >
           {/* <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" /> */}
-          <Image src={item.image} alt={item.title} loading="lazy" quality={100} className="w-full h-full object-cover" width={280} height={280} />
+          <Image src={item.image} alt={item.title} loading="lazy" quality={75} className="w-full h-full object-cover" width={280} height={280} />
         </div>
 
 
@@ -89,7 +89,7 @@ function Testimonials() {
             alt={item.title}
             width={60}
             height={60}
-            quality={100}
+            quality={75}
             className="w-15 rounded-full flex sm:hidden"
           />
           <span>
@@ -110,7 +110,7 @@ function Testimonials() {
             alt={testimonials[(current + 1) % testimonials.length].title}
             width={280}
             height={320}
-            quality={100}
+            quality={75}
             className="w-full h-full object-cover"
           />
         </div>
