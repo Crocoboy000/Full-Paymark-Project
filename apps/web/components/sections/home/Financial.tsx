@@ -114,7 +114,7 @@ function Financial() {
   );
 
   return (
-    <section className="text-light max-w-7xl z-20 relative flex flex-col justify-between items-center w-full">
+    <section id="financial" className="text-light max-w-7xl z-20 relative flex flex-col justify-between items-center w-full">
       <div className="flex flex-col items-center justify-center gap-2">
         <h2 className="text-h4 sm:text-h3 md:text-h2 font-normal text-center">Bank Complete Confidence</h2>
         <p className="text-[10px] sm:text-[12px] sm:w-110 md:text-body md:w-140 text-light/60 text-center w-80">

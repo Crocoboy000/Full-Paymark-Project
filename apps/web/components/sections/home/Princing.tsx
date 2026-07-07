@@ -13,7 +13,7 @@ const { pricingPlans } = homeData;
 
 function Pricing() {
   return (
-    <div className="
+    <div id="pricing" className="
     text-light
     max-w-7xl
     mx-auto

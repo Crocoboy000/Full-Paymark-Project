@@ -139,6 +139,7 @@ export default function FAQ() {
 
   return (
     <div
+      id="faq"
       ref={containerRef}
       className='max-w-7xl mx-auto text-light px-6 md:px-10 py-20 flex flex-col gap-25 overflow-hidden'
     >

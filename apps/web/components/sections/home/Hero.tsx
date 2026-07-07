@@ -63,6 +63,7 @@ function Hero() {
 
   return (
     <section
+      id="home"
       ref={HeroRef}
       className="text-light max-w-7xl relative flex flex-col  items-center w-full gap-12   md:gap-20 lg:gap-25 z-5 py-12 justify-start "
     >

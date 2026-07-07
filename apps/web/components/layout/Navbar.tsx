@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 import UniqueButton from '@/components/ui/Button';
 import { homeData } from '@/context/homeData';
+import { scrollToSection } from '@/utils/scrollToSection';
 
 const { navItems } = homeData;
 
@@ -115,6 +116,21 @@ export default function Navbar() {
 
   const closeMenu = () => setIsOpen(false);
 
+  const handleNavClick = (e: React.MouseEvent, link: string) => {
+    if (link.startsWith('/#')) {
+      e.preventDefault()
+      scrollToSection(link)
+    }
+  }
+
+  const handleMobileNavClick = (e: React.MouseEvent, link: string) => {
+    if (link.startsWith('/#')) {
+      e.preventDefault()
+      closeMenu()
+      scrollToSection(link, 600)
+    }
+  }
+
   return (
     <>
       <nav className="hidden md:flex items-center w-full justify-around px-6 py-4 max-w-7xl mx-auto z-10 text-light">
@@ -126,18 +142,18 @@ export default function Navbar() {
               key={label}
               className="hover:text-blue-600 text-caption font-normal transition-colors duration-200"
             >
-              <Link href={link}>
+              <a href={link} onClick={(e) => handleNavClick(e, link)}>
               {label}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
           
 
           <div className='flex justify-between items-center gap-5'>
-            <Link href="/shop">
+            <a href="/#offer" onClick={(e) => handleNavClick(e, '/#offer')}>
               <ShopIcon className="w-6 h-6" />
-            </Link>
+            </a>
 
             <Link href="/login">
             <span className='text-caption '>Login</span>
@@ -186,7 +202,7 @@ export default function Navbar() {
               key={label}
               href={link}
               ref={(el) => { itemRefs.current[i] = el; }}
-              onClick={closeMenu}
+              onClick={(e) => handleMobileNavClick(e, link)}
               className="
                 group flex items-center gap-3 py-3 w-full
                 text-h4 font-normal text-light

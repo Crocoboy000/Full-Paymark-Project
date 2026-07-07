@@ -8,13 +8,16 @@ import type {
   TestimonialItem,
 } from "./types";
 
+
+
 export const homeData = {
   navItems: [
-    { label: "Home", link: "/", additional: false },
-    { label: "About", link: "/about", additional: false },
-    { label: "Pages", link: "/pages", additional: true },
-    { label: "Features", link: "/features", additional: false },
-    { label: "Career", link: "/career", additional: false },
+    { label: "Home", link: "/#home", additional: false },
+    { label: "Financial", link: "/#financial", additional: false },
+    { label: "Features", link: "/#features", additional: false },
+    { label: "Pricing", link: "/#pricing", additional: false },
+    { label: "Testimonials", link: "/#testimonials", additional: false },
+    { label: "FAQ", link: "/#faq", additional: true },
   ] satisfies NavItem[],
 
   brands: [

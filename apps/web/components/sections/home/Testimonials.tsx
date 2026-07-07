@@ -61,7 +61,7 @@ function Testimonials() {
   const item = testimonials[current];
 
   return (
-    <div className="max-w-7xl mx-auto text-light flex flex-col gap-16 px-2 sm:px-8 py-24 overflow-hidden">
+    <div id="testimonials" className="max-w-7xl mx-auto text-light flex flex-col gap-16 px-2 sm:px-8 py-24 overflow-hidden">
 
       <h2 className="text-center text-h3 md:text-h2 leading-h2">Customer Testimonials</h2>
 
